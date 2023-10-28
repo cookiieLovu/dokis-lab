@@ -1,39 +1,14 @@
-import { ModCallback } from "isaac-typescript-definitions";
-import { getNPCs, getPlayers, getRandomInt } from "isaacscript-common";
 // npx isaacscript
+import { initModFeatures, ISCFeature, upgradeMod } from "isaacscript-common";
+import { TheFlushedOnion } from "./collectibleFeatures/theFlushedOnion";
 
-const MOD_NAME = "dokis-lab";
-// Item Definitions
-const PLACEHOLDER_ITEM_COLLECTIBLE_TYPE =
-  Isaac.GetItemIdByName("Placeholder Item");
+const ISC_FEATURES_FOR_THIS_MOD = [ISCFeature.SAVE_DATA_MANAGER] as const;
+
+const modVanilla = RegisterMod("dokis-lab", 1);
+const mod = upgradeMod(modVanilla, ISC_FEATURES_FOR_THIS_MOD);
+
+const MOD_FEATURES = [TheFlushedOnion] as const;
 
 export function main(): void {
-  const mod = RegisterMod(MOD_NAME, 1);
-
-  // Placeholder Item
-  mod.AddCallback(ModCallback.POST_UPDATE, placeholderItemFunction);
-  function placeholderItemFunction() {
-    checkApplyPlaceholderItemEffect();
-  }
-
-  function checkApplyPlaceholderItemEffect() {
-    for (const player of getPlayers()) {
-      if (player.HasCollectible(PLACEHOLDER_ITEM_COLLECTIBLE_TYPE)) {
-        applyPlaceholderItemEffect(player);
-      }
-    }
-  }
-
-  function applyPlaceholderItemEffect(player: EntityPlayer) {
-    for (const npc of getNPCs()) {
-      if (shouldApplyPlaceholderItemEffectToNPC(npc)) {
-        npc.AddShrink(EntityRef(player), 150);
-      }
-    }
-  }
-
-  // eslint-disable-next-line unicorn/consistent-function-scoping
-  function shouldApplyPlaceholderItemEffectToNPC(npc: EntityNPC) {
-    return npc.IsVulnerableEnemy() && getRandomInt(1, 90, undefined) === 1;
-  }
+  initModFeatures(mod, MOD_FEATURES);
 }
