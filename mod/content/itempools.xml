@@ -1,20 +1,17 @@
 <ItemPools>
   <Pool Name="treasure">
     <Item Name="The Flushed Onion" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+    <Item Name="Lego Brick" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+  </Pool>
+  <Pool Name="boss">
+    <Item Name="Lego Brick" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
   </Pool>
   <Pool Name="greedTreasure">
     <Item Name="The Flushed Onion" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+    <Item Name="Lego Brick" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
   </Pool>
   <Pool Name="greedShop">
     <Item Name="The Flushed Onion" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+    <Item Name="Lego Brick" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
   </Pool>
-  <!--<Pool Name="treasure">
-    <Item Name="The Flushed Onion" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
-  </Pool>
-  <Pool Name="treasure">
-    <Item Name="The Flushed Onion" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
-  </Pool>
-  <Pool Name="treasure">
-    <Item Name="The Flushed Onion" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
-  </Pool>-->
 </ItemPools>
