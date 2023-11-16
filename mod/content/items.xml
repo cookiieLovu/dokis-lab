@@ -1,4 +1,5 @@
 <items gfxroot="gfx/items/" deathanm2="gfx/customDeathItems.anm2" version="1">
-  <passive id="1" name="The Flushed Onion" description="Yo?" gfx="theFlushedOnion.png" tags="summonable" quality="2" craftquality="0" />
+  <passive id="1" name="The Flushed Onion" description="Yo?" gfx="theFlushedOnion.png" tags="summonable" quality="2" craftquality="2" />
   <passive id="2" cache="firedelay" name="Lego Brick" description="Ouch!" gfx="legoBrick.png" tags="tearsup offensive summonable" quality="3" craftquality="3" />
+  <familiar id="3" cache="familiars" name="Ramirez" description="Waos" gfx="ramirez.png" tags="offensive summonable monstermanual" quality="2" craftquality="2" />
 </items>

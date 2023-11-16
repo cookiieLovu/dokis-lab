@@ -1,6 +1,7 @@
 // npx isaacscript
 import { initModFeatures, ISCFeature, upgradeMod } from "isaacscript-common";
 import { LegoBrick } from "./collectibleFeatures/legoBrick";
+import { Ramirez } from "./collectibleFeatures/ramirez";
 import { TheFlushedOnion } from "./collectibleFeatures/theFlushedOnion";
 
 const ISC_FEATURES_FOR_THIS_MOD = [ISCFeature.SAVE_DATA_MANAGER] as const;
@@ -8,7 +9,7 @@ const ISC_FEATURES_FOR_THIS_MOD = [ISCFeature.SAVE_DATA_MANAGER] as const;
 const modVanilla = RegisterMod("doki's lab!", 1);
 const mod = upgradeMod(modVanilla, ISC_FEATURES_FOR_THIS_MOD);
 
-const MOD_FEATURES = [TheFlushedOnion, LegoBrick] as const;
+const MOD_FEATURES = [TheFlushedOnion, LegoBrick, Ramirez] as const;
 
 /*
   ---------------------------------
@@ -20,6 +21,7 @@ const itemDescriptions = {
   theFlushedOnion:
     "Every frame there's a 1/180 chance of charming a random enemy of the room",
   legoBrick: "+0.8 Tears",
+  ramirez: "Spawns a familiar that chases enemies",
 };
 
 export function main(): void {
@@ -40,6 +42,11 @@ export function main(): void {
     EID.addCollectible(
       Isaac.GetItemIdByName("Lego Brick"),
       `{{Tears}} ${itemDescriptions.legoBrick}`,
+    );
+
+    EID.addCollectible(
+      Isaac.GetItemIdByName("Ramirez"),
+      `{{Collectible8}} ${itemDescriptions.ramirez}`,
     );
   }
 
@@ -87,7 +94,26 @@ export function main(): void {
       ModName: "doki's lab!",
     };
 
+    const ramirezWikiDesc = [
+      [
+        { str: "Effects", fsize: 2, clr: 3, halign: 0 },
+        { str: itemDescriptions.ramirez },
+      ],
+    ];
+    const ramirezTab = {
+      Class: "doki's lab!",
+      ID: Isaac.GetItemIdByName("Ramirez"),
+      Pools: [
+        EncyclopediaItemPoolType.POOL_TREASURE,
+        EncyclopediaItemPoolType.POOL_GREED_TREASURE,
+        EncyclopediaItemPoolType.POOL_GREED_SHOP,
+      ],
+      WikiDesc: ramirezWikiDesc,
+      ModName: "doki's lab!",
+    };
+
     Encyclopedia.AddItem(theFlushedOnionTab);
     Encyclopedia.AddItem(legoBrickTab);
+    Encyclopedia.AddItem(ramirezTab);
   }
 }
